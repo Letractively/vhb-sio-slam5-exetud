@@ -1,6 +1,6 @@
 #summary Installation de l'application
 #labels Phase-Deploy
-L'application web de suivi des anciens sera opérationnelle après avoir suivi les deux étapes suivantes. On suppose ici que le serveur web hébergeant les scripts PHP et le serveur de données MySql tournent sur la même machine.
+L'application web de suivi des anciens sera opérationnelle après avoir suivi les deux étapes suivantes. On suppose ici que le serveur web hébergeant les scripts PHP et le serveur de base de données tournent sur la même machine.
 
 = Installation des scripts PHP =
 
@@ -15,6 +15,6 @@ L'application web de suivi des anciens sera opérationnelle après avoir suivi l
   * Importez le fichier create_exetud_mysql.sql qui va créer la base de données de nom bdExetud, le compte utilisateur userExetud et affecter à ce dernier tous les droits sur la base bdExetud.
   ** Importez le fichier insert_exetud_mysql.sql qui va alimenter les lignes des tables de la base de données bdExetud.
 
-= Vérification du bon fonctionnement de l'application web
+= Vérification du bon fonctionnement de l'application web =
   * Lancez un navigateur sur le même poste que celui qui héberge l'application web et la base de données
   * Saisir l'url http://localhost/appliExetud_vx/Accueil.php et vérifier que la page qui s'affiche soit la page d'accueil de l'application sans message d'erreur
