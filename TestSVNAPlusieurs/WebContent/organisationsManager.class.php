@@ -123,4 +123,7 @@ class OrganisationsManager {
 	public function delete($unNum) {
 		return false;	
 	}
+	public function findByTown($ville) {
+		return array();
+	}
 }
