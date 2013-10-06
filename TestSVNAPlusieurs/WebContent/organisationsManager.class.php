@@ -117,4 +117,12 @@ class OrganisationsManager {
 		$jeu->closeCursor();
 		return $num;
 	}
+	/**
+	 * Supprime dans la BD l'organisation portant le numéro spécifié
+	 * Retourne true si la suppression a pu être réalisée, false sinon.
+	 * @param integer $unNum
+	 */
+	public function delete($unNum) {
+		return false;	
+	}
 }
