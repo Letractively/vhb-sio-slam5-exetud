@@ -37,7 +37,6 @@ class OrganisationsManager {
 		$ligne = $this->_cmdSelectByNum->fetch(PDO::FETCH_ASSOC);
 		$this->_cmdSelectByNum->closeCursor();
 		return $ligne;
-		return false;
 	}
 	/**
 	 * Retourne true si le numéro spécifié correspond à celui d'une organisation existante,
