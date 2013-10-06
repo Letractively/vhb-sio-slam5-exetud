@@ -9,8 +9,7 @@ class OrganisationsManager {
 	public function __construct($pdo) {
 		$this->_db = $pdo;
 		$sql = "select * from organisation where numero = ?";
-		$this->_cmdSelectByNum = $this->_db->prepare($sql);
-		
+		$this->_cmdSelectByNum = $this->_db->prepare($sql);		
 	}
 	/**
 	 * Retourne le nombre d'organisations présentes
@@ -47,6 +46,10 @@ class OrganisationsManager {
 	 * @return boolean
 	 */
 	public function existe($numero) {
+		$this->_cmdSelectByNum->execute(array($numero));
+		$nb = $this->_cmdSelectByNum->rowCount();
+		$this->_cmdSelectByNum->closeCursor();
+		return $nb > 0;
 		return false;
 	}
 	
@@ -59,7 +62,13 @@ class OrganisationsManager {
 	 * @return array
 	 */
 	public function getList() {
-		return array();
+		$fields ="*";
+		$order = " order by nom";
+		$sql = "select " . $fields . " from organisation" . $order;
+		$jeu = $this->_db->query($sql);
+		$lesLignes = $jeu->fetchAll(PDO::FETCH_ASSOC);
+		$jeu->closeCursor();
+		return $lesLignes;
 	}
 	/**
 	 * Ajoute la nouvelle organisation dans la base à partir des données spécifiées
@@ -70,7 +79,21 @@ class OrganisationsManager {
 	 * @return mixed
 	 */
 	public function add($uneOrga) {
-		return false;
+		$num = $this->getNextNum();
+		$lesValeurs = array(":numero" => $num);
+		
+		$req = "insert into organisation(numero, ";
+		$reqValues=" values (:numero,";
+		foreach ($uneOrga as $field => $value) {
+			$lesValeurs[":".$field] = $value;
+			$req .= $field .",";
+			$reqValues .= ":" . $field . ",";
+		}
+		$req = substr($req, 0, -1) . ")" . substr($reqValues, 0,-1) . ")";
+		
+		$cmdInsert = $this->_db->prepare($req);
+		$nb = $cmdInsert->execute($lesValeurs);
+		return ($nb == 1) ? $num : false;
 	}
 	/**
 	 * Modifie dans la base l'organisation à partir du numéro spécifié et des données à mettre à jour
