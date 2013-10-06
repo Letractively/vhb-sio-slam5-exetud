@@ -110,8 +110,8 @@ class OrganisationsManager {
 	 */
 	private function getNextNum() {
 		$jeu=$this->_db->query("select max(numero) as maxNum from organisation");
-		$ligne = $jeu->fetch(PDO::FETCH_ASSOC);
-		$num = intval($ligne['maxNum'] + 1);
+		$ligne = $jeu->fetch(PDO::FETCH_NUM);
+		$num = intval($ligne[0] + 1);
 		$jeu->closeCursor();
 		return $num;
 	}
