@@ -192,4 +192,13 @@ class OrganisationsManagerTest extends PHPUnit_Framework_TestCase {
 		$ok = $this->_unManager->update($numero, $tabOrga);
 		self::assertFalse($ok);
 	}
+	/**
+	 * Méthode de test de la méthode delete
+	 * Cas de test : organisation existante avec des stages associés
+	 * 				 organisation existante sans contact
+	 * 				 organisation inexistante
+	 */
+	public function testDelete() {
+		
+	}
 }
