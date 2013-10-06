@@ -8,26 +8,27 @@ require_once("organisationsManager.class.php");
  */
 class OrganisationsManagerTest extends PHPUnit_Framework_TestCase {
 	private $_unManager;
+	private $_monPdo;
 	/**
 	 * Méthode redéfinie dans le scénario de test
 	 * afin d'initialiser les ressources dans un contexte donné, et ce, avant chaque test
 	 * @see PHPUnit_Framework_TestCase::setUp()
 	 */
 	protected function setUp() {
-		$monPdo = new PDO("mysql:host=localhost;dbname=stssio", "stssio", "secret");
-		$monPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-		$this->_unManager = new OrganisationsManager($monPdo);
+		$this->_monPdo = new PDO("mysql:host=localhost;dbname=stssio", "stssio", "secret");
+		$this->_monPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+		$this->_unManager = new OrganisationsManager($this->_monPdo);
 		
 		// suppression de toutes les lignes dans les tables
-		$monPdo->exec("delete from jouerrole");
-		$monPdo->exec("delete from stage");
-		$monPdo->exec("delete from contact");
-		$monPdo->exec("delete from organisation");
-		$monPdo->exec("delete from categorie");
-		$monPdo->exec("delete from etudiant");
-		$monPdo->exec("delete from periodestage");
-		$monPdo->exec("delete from dept");
-		$monPdo->exec("delete from role");
+		$this->_monPdo->exec("delete from jouerrole");
+		$this->_monPdo->exec("delete from stage");
+		$this->_monPdo->exec("delete from contact");
+		$this->_monPdo->exec("delete from organisation");
+		$this->_monPdo->exec("delete from categorie");
+		$this->_monPdo->exec("delete from etudiant");
+		$this->_monPdo->exec("delete from periodestage");
+		$this->_monPdo->exec("delete from dept");
+		$this->_monPdo->exec("delete from role");
 
 		// insertion des lignes du jeu d'essai insertDonneesBDStages_Tests.sql
 		// comprenant 36 organisations
@@ -35,7 +36,7 @@ class OrganisationsManagerTest extends PHPUnit_Framework_TestCase {
 		$req=file_get_contents("defaut.sql","./");
 		$req=str_replace("\n","",$req);
 		$req=str_replace("\r","",$req);
-		$monPdo->exec($req);
+		$this->_monPdo->exec($req);
 	}
 	/**
 	 * Méthode redéfinie dans le scénario de test
@@ -43,7 +44,7 @@ class OrganisationsManagerTest extends PHPUnit_Framework_TestCase {
 	 * @see PHPUnit_Framework_TestCase::tearDown()
 	 */
 	protected function tearDown() {
-		$monPdo = null;
+		$this->_monPdo = null;
 	}
 	/**
 	 * Méthode de test de la méthode count
@@ -52,6 +53,9 @@ class OrganisationsManagerTest extends PHPUnit_Framework_TestCase {
 	public function testCount() {
 		$nb = $this->_unManager->count();
 		self::assertEquals(36, $nb);
+		$this->_monPdo->exec("delete from organisation");
+		$nb = $this->_unManager->count();
+		self::assertEquals(0, $nb);
 	}
 	
 	/**
