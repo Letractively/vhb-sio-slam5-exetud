@@ -148,12 +148,30 @@ class OrganisationsManagerTest extends PHPUnit_Framework_TestCase {
 		$copie = $this->_unManager->getByNum($numero);
 		self::assertContains("contact@agi-informatique.fr", $copie);
 
+		// organisation existante avec 5 colonnes modifiées
+		$tabOrga = array(	"nom" => "AGIT",
+							"rue" => "2 rue de la Houssais",
+							"ville" => "Acigné",
+							"cp" => "35540",
+							"tel" => "0299123456"
+					);
+		$numero = 10;
+		$ok = $this->_unManager->update($numero, $tabOrga);
+		self::assertTrue($ok);
+		$copie = $this->_unManager->getByNum($numero);
+		self::assertContains("AGIT", $copie);
+		self::assertContains("2 rue de la Houssais", $copie);
+		self::assertContains("Acigné", $copie);
+		self::assertContains("35540", $copie);
+		self::assertContains("0299123456", $copie);
+
 		// organisation existante avec 4 colonnes modifiées
 		$tabOrga = array(	"nom" => "AGI",
-							"rue" => "2 rue de la Poterne",
-							"ville" => "Cesson-Sévigné",
-							"cp" => "35510",
-					);
+				"rue" => "2 rue de la Poterne",
+				"ville" => "Cesson-Sévigné",
+				"cp" => "35510",
+				"email" => "agi"
+		);
 		$numero = 10;
 		$ok = $this->_unManager->update($numero, $tabOrga);
 		self::assertTrue($ok);
@@ -162,7 +180,8 @@ class OrganisationsManagerTest extends PHPUnit_Framework_TestCase {
 		self::assertContains("2 rue de la Poterne", $copie);
 		self::assertContains("Cesson-Sévigné", $copie);
 		self::assertContains("", $copie);
-
+		
+		
 		// organisation inexistante avec 1 colonne modifiée
 		$tabOrga = array("email" => "contact@agi-informatique.fr" );
 		$numero = 100;
