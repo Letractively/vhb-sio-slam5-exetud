@@ -50,7 +50,6 @@ class OrganisationsManager {
 		$nb = $this->_cmdSelectByNum->rowCount();
 		$this->_cmdSelectByNum->closeCursor();
 		return $nb > 0;
-		return false;
 	}
 	
 	/**
