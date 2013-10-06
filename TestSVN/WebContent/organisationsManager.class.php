@@ -1,19 +1,30 @@
 <?php
 class OrganisationsManager {
 	private $_db;
+	private $_cmdSelectByNum;
 	/**
 	 * Initialise une instance de OrganisationsManager
 	 * @param PDO $pdo
 	 */
 	public function __construct($pdo) {
 		$this->_db = $pdo;
+		$sql = "select * from organisation where numero = ?";
+		$this->_cmdSelectByNum = $this->_db->prepare($sql);
+		
 	}
 	/**
 	 * Retourne le nombre d'organisations présentes
 	 * @return integer
 	 */
 	public function count() {		
-		return 0;
+		$sql = "select count(*) as nbOrgas from organisation";
+		$jeu = $this->_db->query($sql);
+		
+		$ligne = $jeu->fetch(PDO::FETCH_ASSOC);
+		$nb = $ligne["nbOrgas"];
+		$jeu->closeCursor();
+		return $nb;
+
 	}
 	/**
 	 * Fournit les données de l'organisation portant le numéro spécifié
@@ -23,6 +34,10 @@ class OrganisationsManager {
 	 * @return mixed
 	 */
 	public function getByNum($numero) {
+		$this->_cmdSelectByNum->execute(array($numero));
+		$ligne = $this->_cmdSelectByNum->fetch(PDO::FETCH_ASSOC);
+		$this->_cmdSelectByNum->closeCursor();
+		return $ligne;
 		return false;
 	}
 	/**
