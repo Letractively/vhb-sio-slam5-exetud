@@ -123,6 +123,13 @@ class OrganisationsManager {
 	public function delete($unNum) {
 		return false;	
 	}
+	/**
+	 * Fournit la(les) organisation(s) dont le nom contient tout ou partie du
+	 * nom spécifié
+	 * 
+	 * @param string $name
+	 * @return array:
+	 */
 	public function findByName($name) {
 		return array();
 	}
