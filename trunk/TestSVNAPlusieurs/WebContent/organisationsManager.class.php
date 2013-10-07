@@ -1,4 +1,9 @@
 <?php
+/**
+ * Classe d'accÃ¨s aux organisations mÃ©morisÃ©es dans la BD
+ * @author baraban
+ *
+ */
 class OrganisationsManager {
 	private $_db;
 	private $_cmdSelectByNum;
@@ -125,7 +130,7 @@ class OrganisationsManager {
 	}
 	/**
 	 * Fournit la(les) organisation(s) dont le nom contient tout ou partie du
-	 * nom spécifié
+	 * nom spï¿½cifiï¿½
 	 * 
 	 * @param string $name
 	 * @return array:
