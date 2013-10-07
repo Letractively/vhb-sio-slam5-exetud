@@ -1,9 +1,4 @@
 <?php
-/**
- * Classe d'accès aux organisations mémorisées dans la BD
- * @author baraban
- *
- */
 class OrganisationsManager {
 	private $_db;
 	private $_cmdSelectByNum;
@@ -24,8 +19,8 @@ class OrganisationsManager {
 		$sql = "select count(*) as nbOrgas from organisation";
 		$jeu = $this->_db->query($sql);
 		
-		$ligne = $jeu->fetch(PDO::FETCH_NUM);
-		$nb = $ligne[0];
+		$ligne = $jeu->fetch(PDO::FETCH_ASSOC);
+		$nb = $ligne["nbOrgas"];
 		$jeu->closeCursor();
 		return $nb;
 
@@ -115,8 +110,8 @@ class OrganisationsManager {
 	 */
 	private function getNextNum() {
 		$jeu=$this->_db->query("select max(numero) as maxNum from organisation");
-		$ligne = $jeu->fetch(PDO::FETCH_NUM);
-		$num = intval($ligne[0] + 1);
+		$ligne = $jeu->fetch(PDO::FETCH_ASSOC);
+		$num = intval($ligne['maxNum'] + 1);
 		$jeu->closeCursor();
 		return $num;
 	}
@@ -128,13 +123,6 @@ class OrganisationsManager {
 	public function delete($unNum) {
 		return false;	
 	}
-	/**
-	 * Fournit la(les) organisation(s) dont le nom contient tout ou partie du
-	 * nom spécifié
-	 * 
-	 * @param string $name
-	 * @return array:
-	 */
 	public function findByName($name) {
 		return array();
 	}

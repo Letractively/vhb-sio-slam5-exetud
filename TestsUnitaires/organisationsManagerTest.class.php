@@ -3,7 +3,6 @@ require_once("organisationsManager.class.php");
 
 /**
  * Classe de test de la classe OrganisationsManager
- * @author baldebouc
  * @author baraban
  *
  */
@@ -200,16 +199,6 @@ class OrganisationsManagerTest extends PHPUnit_Framework_TestCase {
 	 * 				 organisation inexistante
 	 */
 	public function testDelete() {
-		
-	}
-	/**
-	 * Méthode de test de la méthode findByName
-	 * Cas de test : une organisation existante répond à une partie de nom
-	 * 				 une organisation existante répond au nom en entier
-	 * 				 plusieurs organisations existante répondent à une partie de nom
-	 * 				 aucune organisation ne répond au nom demandé
-	 */
-	public function testFindByName() {
 		
 	}
 }
