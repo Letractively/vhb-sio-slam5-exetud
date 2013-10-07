@@ -3,6 +3,7 @@ require_once("organisationsManager.class.php");
 
 /**
  * Classe de test de la classe OrganisationsManager
+ * @author baldebouc
  * @author baraban
  *
  */
