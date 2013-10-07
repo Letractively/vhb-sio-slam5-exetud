@@ -24,8 +24,8 @@ class OrganisationsManager {
 		$sql = "select count(*) as nbOrgas from organisation";
 		$jeu = $this->_db->query($sql);
 		
-		$ligne = $jeu->fetch(PDO::FETCH_ASSOC);
-		$nb = $ligne["nbOrgas"];
+		$ligne = $jeu->fetch(PDO::FETCH_NUM);
+		$nb = $ligne[0];
 		$jeu->closeCursor();
 		return $nb;
 
