@@ -130,7 +130,7 @@ class OrganisationsManager {
 	}
 	/**
 	 * Fournit la(les) organisation(s) dont le nom contient tout ou partie du
-	 * nom sp�cifi�
+	 * nom spécifié
 	 * 
 	 * @param string $name
 	 * @return array:
