@@ -10,14 +10,17 @@ require_once("organisationsManager.class.php");
 class OrganisationsManagerTest extends PHPUnit_Framework_TestCase {
 	private $_unManager;
 	private $_monPdo;
+	protected function setUpBeforeClass() {
+		$this->_monPdo = new PDO("mysql:host=localhost;dbname=stssio", "stssio", "secret");
+		$this->_monPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+	}
+			
 	/**
 	 * Méthode redéfinie dans le scénario de test
 	 * afin d'initialiser les ressources dans un contexte donné, et ce, avant chaque test
 	 * @see PHPUnit_Framework_TestCase::setUp()
 	 */
 	protected function setUp() {
-		$this->_monPdo = new PDO("mysql:host=localhost;dbname=stssio", "stssio", "secret");
-		$this->_monPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 		$this->_unManager = new OrganisationsManager($this->_monPdo);
 		
 		// suppression de toutes les lignes dans les tables
@@ -45,6 +48,9 @@ class OrganisationsManagerTest extends PHPUnit_Framework_TestCase {
 	 * @see PHPUnit_Framework_TestCase::tearDown()
 	 */
 	protected function tearDown() {
+		// $this->_monPdo = null;
+	}
+	protected function tearDownAfterClass() {
 		$this->_monPdo = null;
 	}
 	/**
