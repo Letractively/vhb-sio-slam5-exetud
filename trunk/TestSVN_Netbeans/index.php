@@ -11,6 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <p>Hello la copie fonctionne !</p>
+        <p>On teste une première révision</p>
         <?php
         // put your code here
         ?>
