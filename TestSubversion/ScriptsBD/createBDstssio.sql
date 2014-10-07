@@ -70,4 +70,4 @@ INSERT INTO organisation (numero, nom, rue, cp, ville, tel, fax, email, urlSiteW
 (35, 'Digital DC Système', 'Bâtiment B - Rue Pierre de maupertuis', '35170', 'Bruz', '02 99 57 90 74', NULL, NULL, NULL),
 (36, 'Société Quincaillerie Boschat', 'Route de Plancoët - BP 347', '22403', 'Lamballe Cedex', NULL, NULL, NULL, NULL),
 (37, 'Stade Rennais', 'La Piverdière CS 53909', '35039', 'Rennes', NULL, NULL, NULL, 'www.staderennais.com');
----
+-- Fin de fichier sql
