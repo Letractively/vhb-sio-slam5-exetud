@@ -112,7 +112,7 @@ class OrganisationsManagerTest extends PHPUnit_Framework_TestCase {
     }
     public function testCount() {
         $nb = $this->_unManager->count();
-        $this->AssertEquals('36', $nb);
+        $this->AssertEquals(36, $nb);
     }
         /**
      * Méthode de test de la méthode add
