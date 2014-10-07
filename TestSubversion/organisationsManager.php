@@ -155,4 +155,8 @@ class OrganisationsManager {
 	public function update($unNum, $uneOrga) {
 		return false;
 	}
+        
+        public function findVyTown($uneVille) {
+        }
+        }
 }
