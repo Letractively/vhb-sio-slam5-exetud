@@ -118,15 +118,6 @@ class OrganisationsManagerTest extends PHPUnit_Framework_TestCase {
      * Méthode de test de la méthode add
      */
     public function testAdd() {
- /*   
-      $lesOrgas = $this->_unManager->add("WebLand", "Rue du paradis", "35000", "Rennes", "0299887766",
-      "0299887755", "service@webland.com", "webland.com");
-      $this->assertEquals(38, $lesOrgas);
-      $lesOrgas = $this->_unManager->add("Design pour tous", "Rue de l'horloge", "75000", "Amiens", "0211223344",
-      "0211223355", "service@design.com", "designpourtous.com");
-      $this->assertEquals(39, $lesOrgas);
-   
-  */ 
               $orga = array(
 
                     "nom" => "TestAdd" ,
