@@ -119,7 +119,7 @@ class OrganisationsManager {
 	 * Retourne le numéro attribué à l'organisation si l'ajout a été réalisé avec succès,
 	 * le booléen false sinon.
 	 * @param array $uneOrga
-	 * @return boolean
+	 * @return mixed
 	 */
 	public function add($uneOrga) {
             $ok=false;
@@ -155,8 +155,8 @@ class OrganisationsManager {
 	public function update($unNum, $uneOrga) {
 		return false;
 	}
-        
-        public function findVyTown($uneVille) {
-        }
-        }
+	public function findByName($unNom) {
+		return array();
+	}
+	}
 }
