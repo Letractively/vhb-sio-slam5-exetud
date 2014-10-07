@@ -1,4 +1,7 @@
 <?php
+/**
+ * @author Annie Baraban
+ */
 class OrganisationsManager {
         /**
          * @var $_db PDO 
