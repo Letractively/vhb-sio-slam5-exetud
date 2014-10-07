@@ -119,7 +119,7 @@ class OrganisationsManager {
 	 * Retourne le numéro attribué à l'organisation si l'ajout a été réalisé avec succès,
 	 * le booléen false sinon.
 	 * @param array $uneOrga
-	 * @return mixed
+	 * @return boolean
 	 */
 	public function add($uneOrga) {
             $ok=false;
