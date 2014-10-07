@@ -28,7 +28,6 @@ class OrganisationsManager {
          * @param string $unMdp
          */
 	public function __construct($unHote, $uneBD, $unCompte, $unMdp) {
-            // $extraParams = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'');
             $uneChaineConnexion = "mysql:host=" . $unHote . ";dbname=" . $uneBD;
             $this->_db = new PDO($uneChaineConnexion, $unCompte, $unMdp);
             // demande à ce que les erreurs rencontrées sur la connexion
