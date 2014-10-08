@@ -12,7 +12,7 @@ switch($action){
 		$visiteur = $pdo->getInfosVisiteur($login,$mdp);
 		if(!is_array( $visiteur)){
 			ajouterErreur("Login ou mot de passe incorrect", $tabErreurs);
-      include("vues/v_debutContenu.php");
+                        include("vues/v_debutContenu.php");
 			include("vues/v_erreurs.php");
 			include("vues/v_connexion.php");
 		}
