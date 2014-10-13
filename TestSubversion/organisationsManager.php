@@ -2,6 +2,7 @@
 /**
  * @author Annie Baraban
  * @author SIOVHB
+ * @copyright (c) 2014, Annie Baraban
  */
 class OrganisationsManager {
         /**
