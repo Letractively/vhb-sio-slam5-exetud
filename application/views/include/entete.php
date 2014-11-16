@@ -12,5 +12,5 @@
           alt="Logo lycée Victor et Hélène Basch anciennement Ile de France"
           title="Logo lycée Victor et Hélène Basch"
           id="logoLycee" />
-     <h1>Lycée VHB - Intranet de la section STS-SIO</h1>
+     <h1>Lycée VHB - Intranet de la section STS-SIO - <?php  echo $title; ?></h1>
     </div>

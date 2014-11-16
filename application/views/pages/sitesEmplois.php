@@ -5,7 +5,6 @@
 les offres d'emplois et de stages. La plupart d'entre eux offrent une recherche multi-critères tel que la fonction, 
 la région, le niveau d'études.
     </p>
-    <p>Saisis dans l'url => prem vaut <strong><?php echo $prem; ?></strong> et second vaut <strong><?php echo $second; ?></p>
     <ul>
       <li>
         <a href="http://www.indeed.fr/">http://www.indeed.fr</a>
