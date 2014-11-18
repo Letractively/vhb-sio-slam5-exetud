@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Error</title>
-<style type="text/css">
+    <meta charset='utf8' />
+    <title>Error</title>
+    <style type="text/css">
 
 ::selection{ background-color: #E13300; color: white; }
 ::moz-selection{ background-color: #E13300; color: white; }
