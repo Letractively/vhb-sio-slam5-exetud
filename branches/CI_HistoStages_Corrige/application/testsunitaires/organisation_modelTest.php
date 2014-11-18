@@ -31,7 +31,7 @@ class Organisation_ModelTest extends PHPUnit_Framework_TestCase {
 
         // insertion des lignes du jeu d'essai insertDonneesTests.sql
         // comprenant 36 organisations		
-        $req = utf8_encode(file_get_contents("insertDonneesTests.sql", "./"));
+        $req = file_get_contents("insertDonneesTests.sql", "./");
         
         $req = str_replace("\n", "", $req);
         $req = str_replace("\r", "", $req);

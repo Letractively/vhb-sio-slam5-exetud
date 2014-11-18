@@ -17,7 +17,7 @@
         $ville = $uneOrganisation->ville;
         ?>
         	<tr>
-        		<td><?php echo $nom; ?></td>
+        		<td><?php echo anchor('GererOrganisations/detail/' . $numero, $nom) ; ?></td>
                         <td><?php echo $ville; ?></td>
         	</tr>
         <?php

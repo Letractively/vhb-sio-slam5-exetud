@@ -1,5 +1,4 @@
 <?php // if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-//class Organisation_Model extends CI_Model {
 class Organisation_Model {
         /**
          * @var $_monPdo PDO 
@@ -19,7 +18,7 @@ class Organisation_Model {
 	 * - Prépare les requêtes SQL qui comportent des parties variables
 	 */
 	public function __construct() {
-		// parent::__construct();
+		parent::__construct();
 		$server = "localhost";
 		$bdd = "bdstssio";
  		$user = "stssio";
@@ -54,15 +53,21 @@ class Organisation_Model {
 	 * @param int $offset
          * @param int $limit
 	 * @return array tableau d'objets organisations (propriétés objet = colonnes table)
+         * @throws InvalidArgumentException
 	 */
 	public function getSubList($offset, $limit) {
-            $this->_cmdSubList->bindValue("offset", $offset, PDO::PARAM_INT);
-            $this->_cmdSubList->bindValue("limit", $limit, PDO::PARAM_INT);
-            $this->_cmdSubList->execute();
-            $this->_cmdSubList->setFetchMode(PDO::FETCH_OBJ);
-            $lignes = $this->_cmdSubList->fetchAll();
-            $this->_cmdSubList->closeCursor();
-            return $lignes;
+            if ( !is_integer($offset) || $offset < 0 || !is_integer($limit) || $limit < 0 ) {
+                throw new InvalidArgumentException("Paramètre offset ou limit incorrect.");
+            }
+            else {
+                $this->_cmdSubList->bindValue("offset", $offset, PDO::PARAM_INT);
+                $this->_cmdSubList->bindValue("limit", $limit, PDO::PARAM_INT);
+                $this->_cmdSubList->execute();
+                $this->_cmdSubList->setFetchMode(PDO::FETCH_OBJ);
+                $lignes = $this->_cmdSubList->fetchAll();
+                $this->_cmdSubList->closeCursor();
+                return $lignes;
+            }
 	}
 	/**
          * Fournit le nombre d'organisations recensées
@@ -99,7 +104,7 @@ class Organisation_Model {
 	 * @return boolean
 	 */
 	public function existe($numero) {
-            return is_array($this->getByNum($numero));
+            return is_object($this->getByNum($numero));
 	}
         
 }
